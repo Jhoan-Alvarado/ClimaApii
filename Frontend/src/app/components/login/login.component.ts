@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
 
     if (this.form.valid) {
-      this.client.postRequest("http://localhost:10101/login",
+      this.client.postRequest("https://backendprueba-gkk7.onrender.com/login",
         {
           email: this.form.value.email,
           password: this.form.value.password
