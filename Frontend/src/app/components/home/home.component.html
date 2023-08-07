@@ -1,0 +1,30 @@
+<p *ngIf="auth.isLoggedIn() | async">Hola</p>
+
+<form *ngIf="auth.isLoggedIn() | async" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="place">
+    <br>
+    <input type="text" formControlName="country">
+    <br>
+    <button type="submit">Enviar</button>
+</form>
+
+<div class="card">
+    <h2>{{data.name}}</h2>
+    <h3>{{data?.sys?.country}}</h3>
+    <ul>
+        <li>Temperatura actual: {{data?.main?.temp-272.15 | number:'1.0-0'}} °C</li>
+        <li>Sensación térmica: {{data?.main?.feels_like-272.15 | number:'1.0-0'}} °C</li>
+        <!-- <li>Temperatura máxima: {{data?.main?.temp_max-272.15 | number:'1.0-0'}}</li> -->
+        <!-- <li>Temperatura mínima: {{data?.main?.temp_min-272.15 | number:'1.0-0'}}</li> -->
+        <li>Humedad: {{data?.main?.humidity}}</li>
+        <li>Presión: {{data?.main?.pressure}} hpa</li>
+        <li>Latitud: {{data?.coord?.lat}}</li>
+        <li>Longitud: {{data?.coord?.lon}}</li>
+        <li>Viento | Velocidad: {{data?.wind?.speed}} m/s</li>
+        <li>Viento | Dirección: {{data?.wind?.deg}} m/s</li>
+        <li>Porcentaje de nubosidad {{data?.clouds?.all}}%</li>
+        <li>{{weather}}</li>
+        <li>Descripción: {{data?.weather?.[0]?.description}}</li>
+    </ul>
+    <i [class]="weatherIcon"></i>
+</div>
